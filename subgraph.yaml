@@ -1,0 +1,157 @@
+specVersion: 0.0.2
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum/contract
+    name: USRLG_v1
+    network: mainnet
+    source:
+      address: "0x4316e3aD83ca2Cf0ea5e3b25e3DE2fA7F93cfE9c"
+      abi: USRLG_v1
+      startBlock: 9408121
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      entities:
+        - USRLG_v1detailsEvent
+        - USRLG_v1LetsWithdrawonlyERCCall
+        - USRLG_v1LetsWithdrawonlyETHCall
+        - USRLG_v1destructCall
+        - USRLG_v1initializeCall
+        - USRLG_v1initialize1Call
+        - USRLG_v1setnewUniSwapFactoryAddressCall
+        - USRLG_v1setnewdzgoodwillAddressCall
+        - USRLG_v1setnewgoodwillCall
+        - USRLG_v1toggleContractActiveCall
+        - USRLG_v1transferOwnershipCall
+        - USRLG_v1withdrawCall
+        - USRLG_v1withdrawERC20TokenCall
+      abis:
+        - name: USRLG_v1
+          file: ./abis/USRLG_v1.json
+      callHandlers:
+        - function: LetsWithdraw_onlyERC(address,uint256,bool)
+          handler: handleLetsWithdrawonlyERCCall
+        - function: LetsWithdraw_onlyETH(address,uint256)
+          handler: handleLetsWithdrawonlyETHCall
+        - function: destruct()
+          handler: handledestructCall
+        - function: initialize(address,uint16,address,address)
+          handler: handleinitializeCall
+        - function: initialize()
+          handler: handleinitialize1Call
+        - function: set_new_UniSwapFactoryAddress(address)
+          handler: handlesetnewUniSwapFactoryAddressCall
+        - function: set_new_dzgoodwillAddress(address)
+          handler: handlesetnewdzgoodwillAddressCall
+        - function: set_new_goodwill(uint16)
+          handler: handlesetnewgoodwillCall
+        - function: toggleContractActive()
+          handler: handletoggleContractActiveCall
+        - function: transferOwnership(address)
+          handler: handletransferOwnershipCall
+        - function: withdraw()
+          handler: handlewithdrawCall
+        - function: withdrawERC20Token(address)
+          handler: handlewithdrawERC20TokenCall
+      eventHandlers:
+        - event: details(indexed address,address,address,uint256,uint256,uint256,indexed string)
+          handler: handledetailsEvent
+      file: ./src/USRLG_v1Mapping.ts
+  - kind: ethereum/contract
+    name: USALV2_G
+    network: mainnet
+    source:
+      address: "0x606563f8DC27F316b77F22d14D9Cd025B4F70469"
+      abi: USALV2_G
+      startBlock: 9071788
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      entities:
+        - USALV2_GERC20TokenHoldingsOnConversionEvent
+        - USALV2_GLiquidityTokensEvent
+        - USALV2_GOwnershipTransferredEvent
+        - USALV2_GLetsInvestCall
+        - USALV2_GdepositETHCall
+        - USALV2_GrenounceOwnershipCall
+        - USALV2_GtransferOwnershipCall
+        - USALV2_GwithdrawCall
+        - USALV2_GwithdrawERC20TokenCall
+      abis:
+        - name: USALV2_G
+          file: ./abis/USALV2_G.json
+      callHandlers:
+        - function: LetsInvest(address,address)
+          handler: handleLetsInvestCall
+        - function: depositETH()
+          handler: handledepositETHCall
+        - function: renounceOwnership()
+          handler: handlerenounceOwnershipCall
+        - function: transferOwnership(address)
+          handler: handletransferOwnershipCall
+        - function: withdraw()
+          handler: handlewithdrawCall
+        - function: withdrawERC20Token(address)
+          handler: handlewithdrawERC20TokenCall
+      eventHandlers:
+        - event: ERC20TokenHoldingsOnConversion(uint256)
+          handler: handleERC20TokenHoldingsOnConversionEvent
+        - event: LiquidityTokens(uint256)
+          handler: handleLiquidityTokensEvent
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferredEvent
+      file: ./src/USALV2_GMapping.ts
+  - kind: ethereum/contract
+    name: UV2_ZO_G_V2_1
+    network: mainnet
+    source:
+      address: "0x79B6C6F8634ea477ED725eC23b7b6Fcb41F00E58"
+      abi: UV2_ZO_G_V2_1
+      startBlock: 11021439
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      entities:
+        - UV2_ZO_G_V2_1OwnershipTransferredEvent
+        - UV2_ZO_G_V2_1ZapOutCall
+        - UV2_ZO_G_V2_1ZapOut2PairTokenCall
+        - UV2_ZO_G_V2_1ZapOut2PairTokenWithPermitCall
+        - UV2_ZO_G_V2_1ZapOutWithPermitCall
+        - UV2_ZO_G_V2_1inCaseTokengetsStuckCall
+        - UV2_ZO_G_V2_1renounceOwnershipCall
+        - UV2_ZO_G_V2_1setnewgoodwillCall
+        - UV2_ZO_G_V2_1toggleContractActiveCall
+        - UV2_ZO_G_V2_1transferOwnershipCall
+        - UV2_ZO_G_V2_1withdrawCall
+      abis:
+        - name: UV2_ZO_G_V2_1
+          file: ./abis/UV2_ZO_G_V2_1.json
+      callHandlers:
+        - function: ZapOut(address,address,uint256,uint256)
+          handler: handleZapOutCall
+        - function: ZapOut2PairToken(address,uint256)
+          handler: handleZapOut2PairTokenCall
+        - function: ZapOut2PairTokenWithPermit(address,uint256,uint256,uint256,uint8,bytes32,bytes32)
+          handler: handleZapOut2PairTokenWithPermitCall
+        - function: ZapOutWithPermit(address,address,uint256,uint256,uint256,uint256,uint8,bytes32,bytes32)
+          handler: handleZapOutWithPermitCall
+        - function: inCaseTokengetsStuck(address)
+          handler: handleinCaseTokengetsStuckCall
+        - function: renounceOwnership()
+          handler: handlerenounceOwnershipCall
+        - function: set_new_goodwill(uint16)
+          handler: handlesetnewgoodwillCall
+        - function: toggleContractActive()
+          handler: handletoggleContractActiveCall
+        - function: transferOwnership(address)
+          handler: handletransferOwnershipCall
+        - function: withdraw()
+          handler: handlewithdrawCall
+      eventHandlers:
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferredEvent
+      file: ./src/UV2_ZO_G_V2_1Mapping.ts

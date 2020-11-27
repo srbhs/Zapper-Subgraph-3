@@ -1,0 +1,16 @@
+{
+  "name": "static-subgraph",
+  "license": "UNLICENSED",
+  "scripts": {
+    "codegen": "graph codegen",
+    "build": "graph build",
+    "deploy": "graph deploy --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ --access-token 42abe5ce6dc24a5298db27ce7c2a8331 tech-nerd/productioneip20token",
+    "create-local": "graph create --node http://localhost:8020/ napolean0/static-subgraph",
+    "remove-local": "graph remove --node http://localhost:8020/ napolean0/static-subgraph",
+    "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 napolean0/static-subgraph"
+  },
+  "dependencies": {
+    "@graphprotocol/graph-cli": "git+ssh://git@github.com/dappquery/graph-cli-dq.git",
+    "@graphprotocol/graph-ts": "0.18.1"
+  }
+}
